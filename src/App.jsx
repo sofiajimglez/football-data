@@ -1,10 +1,11 @@
 import './App.css'
+import CompetitionsList from './components/competitions/competitions-list/CompetitionsList'
 
 function App() {
 
   return (
     <>
-      <p>Hello world!</p>
+      <CompetitionsList />
     </>
   )
 }                                                                                                                                                         
