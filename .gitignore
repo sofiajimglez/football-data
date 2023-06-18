@@ -1,5 +1,7 @@
 postman/
 
+.env
+
 # Logs
 logs
 *.log
