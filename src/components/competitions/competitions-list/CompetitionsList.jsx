@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import competitionsService from "../../../services/competitions.service";
+import CompetitionItem from "../competition-item/CompetitionItem";
 
 export default function CompetitionsList() {
 
@@ -9,7 +10,7 @@ export default function CompetitionsList() {
     competitionsService.list()
     .then(res => {
       const competitionsList = res.competitions;
-      const leagues = competitionsList.filter(competition => competition.type === 'LEAGUE')
+      const leagues = competitionsList.filter(competition => competition.type === 'LEAGUE');
       setCompetitions(leagues)
     })
     .catch(console.error)
@@ -20,7 +21,7 @@ export default function CompetitionsList() {
   return (
     <div>
       <h2>Competitions List</h2>
-      {competitions.map(competition => (<p key={competition.id}>{competition.name}</p>))}
+      {competitions.map(elem => <CompetitionItem key={elem.id} competition={elem} />)}
     </div>
   )
 }
