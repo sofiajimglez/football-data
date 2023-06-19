@@ -1,5 +1,5 @@
-import CompetitionHeader from "../components/competitions/competition-detail/competition-header/CompetitionHeader";
-import CompetitionSeasons from "../components/competitions/competition-detail/competition-seasons/CompetitionSeasons";
+import CompetitionHeader from "../components/competitions/competition-header/CompetitionHeader";
+import CompetitionSeasons from "../components/competitions/competition-seasons/CompetitionSeasons";
 import PageLayout from "../components/layout/page-layout/PageLayout";
 
 export default function DetailPage() {

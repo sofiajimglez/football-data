@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
-import competitionsService from "../../../../services/competitions.service";
+import competitionsService from "../../../services/competitions.service";
 
 export default function CompetitionHeader() {
 
