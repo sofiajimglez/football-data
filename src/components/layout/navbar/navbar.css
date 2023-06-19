@@ -1,0 +1,16 @@
+nav {
+  background: rgb(4,55,134);
+  background: linear-gradient(90deg, rgba(4,55,134,1) 0%, rgba(74,122,184,1) 70%, rgba(4,55,134,1) 100%);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.nav-link {
+  font-family: 'Poppins', sans-serif;
+  color: whitesmoke;
+  margin-right: 1em;
+}
+
+.nav-link:hover {
+  border-bottom: 2px solid whitesmoke;
+  color: whitesmoke;
+}
