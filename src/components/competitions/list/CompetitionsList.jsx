@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import competitionsService from "../../../services/competitions.service";
-import CompetitionItem from "../item/CompetitionItem";
+import CompetitionItem from "./CompetitionItem";
 
 export default function CompetitionsList() {
 
