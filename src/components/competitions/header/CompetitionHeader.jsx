@@ -7,7 +7,7 @@ export default function CompetitionHeader({ competition }) {
   return (
     <div>
       <h1>{competition.name}</h1>
-      <Link to={`/competitions/${competition.id}/standings`}>See standings</Link>
+      <Link to={`/competitions/${competition.code}/standings`}>See standings</Link>
     </div>
   )
 }
