@@ -7,7 +7,11 @@ export default function CompetitionHeader({ competition }) {
   return (
     <div>
       <h1>{competition.name}</h1>
-      <Link to={`/competitions/${competition.code}/standings`}>See standings</Link>
+      <div className="d-flex gap-2 mb-3">
+        <Link to={`/competitions/${competition.code}`}>See seasons</Link>
+        <Link to={`/competitions/${competition.code}/standings`}>See standings</Link>
+        <Link to={`/competitions/${competition.code}/matches`}>See matches</Link>
+      </div>
     </div>
   )
 }
