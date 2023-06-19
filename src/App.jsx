@@ -1,14 +1,14 @@
-import './App.css'
-import CompetitionsList from './components/competitions/competitions-list/CompetitionsList'
-import PageLayout from './components/layout/page-layout/PageLayout'
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
+import HomePage from './pages/HomePage';
 
 function App() {
 
   return (
     <>
-      <PageLayout>
-        <CompetitionsList />
-      </PageLayout>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+      </Routes>
     </>
   )
 }                                                                                                                                                         
