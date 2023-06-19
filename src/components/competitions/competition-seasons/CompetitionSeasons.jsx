@@ -2,26 +2,26 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import competitionsService from "../../../services/competitions.service";
 import SeasonItem from "./SeasonItem";
+import CompetitionHeader from "../competition-header/CompetitionHeader";
 
 export default function CompetitionSeasons() {
 
   const { code } = useParams();
-  const [seasons, setSeasons] = useState([]);
+  const [competition, setCompetition] = useState({});
 
   useEffect(() => {
     competitionsService.detail(code)
-      .then(res => {
-        const seasonsList = res.seasons;
-        console.log(seasonsList);
-        setSeasons(seasonsList);
-      })
+      .then(res => setCompetition(res))
       .catch(console.error)
   }, [code]);
 
-  if (seasons.length === 0) return (<p>Loading...</p>)
+  const seasons = competition.seasons;
+
+  if (Object.keys(competition).length === 0) return (<p>Loading...</p>);
 
   return (
     <div>
+      <CompetitionHeader competition={competition} />
       {seasons.map(season => <SeasonItem key={season.id} season={season} />)}
     </div>
   )

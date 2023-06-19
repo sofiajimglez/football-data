@@ -1,12 +1,11 @@
 import CompetitionHeader from "../components/competitions/competition-header/CompetitionHeader";
-import CompetitionSeasons from "../components/competitions/competition-seasons/CompetitionSeasons";
 import PageLayout from "../components/layout/page-layout/PageLayout";
 
-export default function DetailPage() {
+
+export default function StandingsPage() {
   return (
     <PageLayout>
       <CompetitionHeader />
-      <CompetitionSeasons />
     </PageLayout>
   )
 }
