@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import competitionsService from "../../../services/competitions.service";
 import SeasonItem from "./SeasonItem";
-import CompetitionHeader from "../competition-header/CompetitionHeader";
+import CompetitionHeader from "../header/CompetitionHeader";
 
 export default function CompetitionSeasons() {
 
