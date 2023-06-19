@@ -1,0 +1,22 @@
+footer {
+  background-color: #043786;
+  color: whitesmoke;
+  font-family: 'Poppins', sans-serif;
+}
+
+footer a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: darkgray;
+}
+
+.footer-main {
+  font-size: 13px;
+}
+
+.footer-info {
+  font-size: 11px;
+}

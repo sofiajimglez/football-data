@@ -1,13 +1,14 @@
 import './App.css'
 import CompetitionsList from './components/competitions/competitions-list/CompetitionsList'
-import Navbar from './components/layout/navbar/Navbar'
+import PageLayout from './components/layout/page-layout/PageLayout'
 
 function App() {
 
   return (
     <>
-      <Navbar />
-      <CompetitionsList />
+      <PageLayout>
+        <CompetitionsList />
+      </PageLayout>
     </>
   )
 }                                                                                                                                                         
