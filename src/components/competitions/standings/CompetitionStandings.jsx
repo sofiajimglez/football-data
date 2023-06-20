@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import competitionsService from "../../../services/competitions.service";
 import CompetitionHeader from "../header/CompetitionHeader";
 import StandingItem from "./StandingItem";
+import ErrorAlert from "../../errors/error-alert/ErrorAlert";
 
 export default function CompetitionStandings() {
 
@@ -21,18 +22,17 @@ export default function CompetitionStandings() {
         const standingsTable = standingsData.standings.map(elem => elem.table).flat();
         setStandings(standingsTable);
 
+        setFetchError('');
+
       } catch (error) {
         console.error(error);
-        setFetchError(error.message);
+        setFetchError(error.response?.data?.message);
       }
     }
-
-    setFetchError('');
+    
     fetchData();
 
   }, [code]);
-
-  console.log(standings)
 
   if (standings.length === 0) return (<p>Loading...</p>);
 
@@ -40,10 +40,7 @@ export default function CompetitionStandings() {
     <div>
       <CompetitionHeader competition={competition} />
 
-      {fetchError && (<div className="alert alert-danger" role="alert">
-        <p>An error occurred while loading the matches! 😥 Please, try again later.</p>
-        <br /><small>{fetchError}</small>
-      </div>)}
+      {fetchError && <ErrorAlert message={fetchError} />}
 
       {standings.map(standing => <StandingItem data={standing} key={standing.position} />)}
     </div>

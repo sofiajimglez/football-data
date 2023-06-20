@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import competitionsService from "../../../services/competitions.service";
 import CompetitionHeader from "../header/CompetitionHeader";
 import MatchdayGroup from "./MatchdayGroup";
+import ErrorAlert from "../../errors/error-alert/ErrorAlert";
 
 export default function CompetitionMatches() {
   const { code } = useParams();
@@ -31,14 +32,15 @@ export default function CompetitionMatches() {
         // Extracts result in one array of arrays. Each one is a matchday with the corresponding matches
         const matchesByMatchdayArr = Object.values(matchesByMatchday);
         setMatches(matchesByMatchdayArr);
+
+        setFetchError('');
         
       } catch (error) {
         console.error(error);
-        setFetchError(error.message);
+        setFetchError(error.response?.data?.message);
       }
     }
-
-    setFetchError('');
+    
     fetchData();
 
   }, [code]);
@@ -49,10 +51,7 @@ export default function CompetitionMatches() {
     <div>
       <CompetitionHeader competition={competition} />
 
-      {fetchError && (<div className="alert alert-danger" role="alert">
-        <p>An error occurred while loading the matches! 😥 Please, try again later.</p>
-        <br /><small>{fetchError}</small>
-      </div>)}
+      {fetchError && <ErrorAlert message={fetchError} />}
 
       {matches.map((matchday, i) => <MatchdayGroup day={i + 1} matches={matchday} key={i} />)}
     </div>
