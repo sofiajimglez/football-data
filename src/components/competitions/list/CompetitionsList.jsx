@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import './competitions.css';
 import competitionsService from "../../../services/competitions.service";
 import CompetitionItem from "./CompetitionItem";
 import ErrorAlert from "../../errors/error-alert/ErrorAlert";
@@ -10,16 +11,16 @@ export default function CompetitionsList() {
 
   useEffect(() => {
     competitionsService.list()
-    .then(res => {
-      const competitionsList = res.competitions;
-      const leagues = competitionsList.filter(competition => competition.type === 'LEAGUE');
-      setCompetitions(leagues);
-      setFetchError('');
-    })
-    .catch(error => {
-      console.error(error);
-      setFetchError(error.response?.data?.message);
-    })
+      .then(res => {
+        const competitionsList = res.competitions;
+        const leagues = competitionsList.filter(competition => competition.type === 'LEAGUE');
+        setCompetitions(leagues);
+        setFetchError('');
+      })
+      .catch(error => {
+        console.error(error);
+        setFetchError(error.response?.data?.message);
+      })
   }, []);
 
   if (competitions.length === 0) return (<p>Loading...</p>);
@@ -30,7 +31,10 @@ export default function CompetitionsList() {
 
       {fetchError && <ErrorAlert message={fetchError} />}
 
-      {competitions.map(elem => <CompetitionItem key={elem.id} competition={elem} />)}
+      <section className="row gap-4 my-5 mx-2">
+        {competitions.map(elem => <CompetitionItem key={elem.id} competition={elem} />)}
+      </section>
+
     </div>
   )
 }
