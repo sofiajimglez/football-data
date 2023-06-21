@@ -28,12 +28,26 @@ export default function CompetitionSeasons() {
   if (Object.keys(competition).length === 0) return (<p>Loading...</p>);
 
   return (
-    <div>
+    <>
       <CompetitionHeader competition={competition} />
 
       {fetchError && <ErrorAlert message={fetchError} />}
 
-      {seasons.map(season => <SeasonItem key={season.id} season={season} />)}
-    </div>
+      <h2 className="mt-5">Seasons</h2>
+
+      <div className="table-responsive mt-3">
+        <table className="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Total seasons: {seasons.length}</th>
+              <th scope="col">Winner</th>
+            </tr>
+          </thead>
+          <tbody className="table-group-divider">
+            {seasons.map((season, i) => <SeasonItem key={season.id} season={season} index={i + 1} />)}
+          </tbody>
+        </table>
+      </div>
+    </>
   )
 }

@@ -5,7 +5,16 @@ font-family: 'Poppins', sans-serif;
 font-family: 'Staatliches', cursive;
 */
 
-h1, h2, h3 {
+body {
+  background-image: url('/bg-football-data-1.png');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+h1,
+h2,
+h3 {
   font-family: 'Staatliches', cursive;
 }
 
@@ -14,6 +23,19 @@ h2 {
   border-image: linear-gradient(45deg, #043786, #4a7ab8) 1;
 }
 
-h4, h5, h6, p {
+h4,
+h5,
+h6,
+p {
   font-family: 'Poppins', sans-serif;
+}
+
+/* TABLES */
+
+table {
+  font-family: 'Poppins', sans-serif;
+}
+
+table>:not(caption)>*>* {
+  background-color: rgb(255, 255, 255, .4) !important;
 }
