@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getFormattedYear } from "../../../utils/getFormattedYear";
 import competitionsService from "../../../services/competitions.service";
 import CompetitionHeader from "../header/CompetitionHeader";
 import StandingItem from "./StandingItem";
@@ -34,6 +35,9 @@ export default function CompetitionStandings() {
 
   }, [code]);
 
+  const startYear = getFormattedYear(competition?.currentSeason?.startDate);
+  const endYear = getFormattedYear(competition?.currentSeason?.endDate);
+
   if (standings.length === 0) return (<p>Loading...</p>);
 
   return (
@@ -43,6 +47,8 @@ export default function CompetitionStandings() {
       {fetchError && <ErrorAlert message={fetchError} />}
 
       <h2 className="mt-5">Standings</h2>
+
+      <p className="mt-4"><strong>Season:</strong> {startYear}/{endYear}</p>
 
       <div className="table-responsive mt-3">
         <table className="table table-striped">
@@ -62,8 +68,8 @@ export default function CompetitionStandings() {
             {standings.map(standing => <StandingItem data={standing} key={standing.position} />)}
           </tbody>
         </table>
-        <p className="mt-3"><small>POS: Position — P: Points — W: Won matches — D: Drawn matches — L: Lost matches — GF: Goals for — GA: Goals against</small></p>
       </div>
+      <p className="mt-3"><small>POS: Position — P: Points — W: Won matches — D: Drawn matches — L: Lost matches — GF: Goals for — GA: Goals against</small></p>
     </>
   )
 }
