@@ -1,11 +1,9 @@
-import dayjs from 'dayjs';
+import { getFormattedYear } from "../../../utils/getFormattedYear";
 
-export default function SeasonItem({ season, index }) {
+export default function SeasonItem({ season }) {
 
-  const startDate = dayjs(season.startDate);
-  const startYear = startDate.year();
-  const endDate = dayjs(season.endDate);
-  const endYear = endDate.year();
+  const startYear = getFormattedYear(season.startDate);
+  const endYear = getFormattedYear(season.endDate);
 
   return (
     <tr>

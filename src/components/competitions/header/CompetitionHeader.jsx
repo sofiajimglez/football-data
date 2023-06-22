@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
-import dayjs from 'dayjs';
+import { getFormattedYear } from "../../../utils/getFormattedYear";
 import './header.css';
 
 export default function CompetitionHeader({ competition }) {
 
-  const startDate = dayjs(competition.currentSeason.startDate);
-  const startYear = startDate.year();
-  const endDate = dayjs(competition.currentSeason.endDate);
-  const endYear = endDate.year();
+  const startYear = getFormattedYear(competition.currentSeason.startDate);
+  const endYear = getFormattedYear(competition.currentSeason.endDate);
 
   if (!competition) return (<p>Loading...</p>);
 
