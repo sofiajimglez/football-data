@@ -29,7 +29,7 @@ export default function CompetitionStandings() {
         setFetchError(error.response?.data?.message);
       }
     }
-    
+
     fetchData();
 
   }, [code]);
@@ -37,12 +37,33 @@ export default function CompetitionStandings() {
   if (standings.length === 0) return (<p>Loading...</p>);
 
   return (
-    <div>
+    <>
       <CompetitionHeader competition={competition} />
 
       {fetchError && <ErrorAlert message={fetchError} />}
 
-      {standings.map(standing => <StandingItem data={standing} key={standing.position} />)}
-    </div>
+      <h2 className="mt-5">Standings</h2>
+
+      <div className="table-responsive mt-3">
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">POS</th>
+              <th scope="col">TEAM</th>
+              <th scope="col">P</th>
+              <th scope="col">W</th>
+              <th scope="col">D</th>
+              <th scope="col">L</th>
+              <th scope="col">GF</th>
+              <th scope="col">GA</th>
+            </tr>
+          </thead>
+          <tbody className="table-group-divider">
+            {standings.map(standing => <StandingItem data={standing} key={standing.position} />)}
+          </tbody>
+        </table>
+        <p className="mt-3"><small>POS: Position — P: Points — W: Won matches — D: Drawn matches — L: Lost matches — GF: Goals for — GA: Goals against</small></p>
+      </div>
+    </>
   )
 }
