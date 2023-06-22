@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getFormattedYear } from "../../../utils/getFormattedYear";
 import competitionsService from "../../../services/competitions.service";
 import CompetitionHeader from "../header/CompetitionHeader";
 import MatchdayGroup from "./MatchdayGroup";
@@ -45,15 +46,20 @@ export default function CompetitionMatches() {
 
   }, [code]);
 
+  const startYear = getFormattedYear(competition?.currentSeason?.startDate);
+  const endYear = getFormattedYear(competition?.currentSeason?.endDate);
+
   if (matches.length === 0) return (<p>Loading...</p>);
 
   return (
-    <div>
+    <>
       <CompetitionHeader competition={competition} />
 
       {fetchError && <ErrorAlert message={fetchError} />}
 
+      <h2 className="mt-5">Season: {startYear}/{endYear}</h2>
+
       {matches.map((matchday, i) => <MatchdayGroup day={i + 1} matches={matchday} key={i} />)}
-    </div>
+    </>
   )
 }

@@ -1,0 +1,6 @@
+.score-info {
+  background: rgb(74, 122, 184);
+  background: linear-gradient(232deg, rgba(74, 122, 184, 1) 0%, rgba(4, 55, 134, 1) 100%);
+  color: whitesmoke;
+  border-radius: 5px;
+}
