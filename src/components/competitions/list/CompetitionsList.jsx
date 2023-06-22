@@ -3,11 +3,13 @@ import './competitions.css';
 import competitionsService from "../../../services/competitions.service";
 import CompetitionItem from "./CompetitionItem";
 import ErrorAlert from "../../errors/error-alert/ErrorAlert";
+import SearchInput from "../../forms/search-input/SearchInput";
 
 export default function CompetitionsList() {
 
   const [competitions, setCompetitions] = useState([]);
   const [fetchError, setFetchError] = useState('');
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     competitionsService.list()
@@ -23,18 +25,24 @@ export default function CompetitionsList() {
       })
   }, []);
 
+  const onSearch = (value) => setSearch(value);
+
+  const filteredCompetitions = competitions.filter(elem => elem.name.toLowerCase().includes(search.toLowerCase()));
+
   if (competitions.length === 0) return (<p>Loading...</p>);
 
   return (
-    <div>
+    <>
       <h2>Competitions List</h2>
+
+      <SearchInput search={search} onSearch={onSearch} placeholder={"Search competition..."} />
 
       {fetchError && <ErrorAlert message={fetchError} />}
 
-      <section className="row gap-4 my-5 mx-2">
-        {competitions.map(elem => <CompetitionItem key={elem.id} competition={elem} />)}
+      <section className="row gap-4 my-4 mx-2">
+        {filteredCompetitions.map(elem => <CompetitionItem key={elem.id} competition={elem} />)}
       </section>
 
-    </div>
+    </>
   )
 }

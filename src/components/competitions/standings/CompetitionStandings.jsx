@@ -5,6 +5,7 @@ import competitionsService from "../../../services/competitions.service";
 import CompetitionHeader from "../header/CompetitionHeader";
 import StandingItem from "./StandingItem";
 import ErrorAlert from "../../errors/error-alert/ErrorAlert";
+import SearchInput from "../../forms/search-input/SearchInput";
 
 export default function CompetitionStandings() {
 
@@ -12,6 +13,7 @@ export default function CompetitionStandings() {
   const [competition, setCompetition] = useState({});
   const [standings, setStandings] = useState([]);
   const [fetchError, setFetchError] = useState('');
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -38,6 +40,10 @@ export default function CompetitionStandings() {
   const startYear = getFormattedYear(competition?.currentSeason?.startDate);
   const endYear = getFormattedYear(competition?.currentSeason?.endDate);
 
+  const onSearch = (value) => setSearch(value);
+
+  const filteredTeams = standings.filter(elem => elem.team.name.toLowerCase().includes(search.toLowerCase()));
+
   if (standings.length === 0) return (<p>Loading...</p>);
 
   return (
@@ -48,7 +54,9 @@ export default function CompetitionStandings() {
 
       <h2 className="mt-5">Standings</h2>
 
-      <p className="mt-4"><strong>Season:</strong> {startYear}/{endYear}</p>
+      <p className="mt-4 mb-0"><strong>Season:</strong> {startYear}/{endYear}</p>
+
+      <SearchInput search={search} onSearch={onSearch} placeholder={"Search team..."} />
 
       <div className="table-responsive mt-3">
         <table className="table table-striped">
@@ -65,7 +73,7 @@ export default function CompetitionStandings() {
             </tr>
           </thead>
           <tbody className="table-group-divider">
-            {standings.map(standing => <StandingItem data={standing} key={standing.position} />)}
+            {filteredTeams.map(standing => <StandingItem data={standing}  />)}
           </tbody>
         </table>
       </div>

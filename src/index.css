@@ -39,3 +39,9 @@ table {
 table>:not(caption)>*>* {
   background-color: rgb(255, 255, 255, .8) !important;
 }
+
+/* FORMS */
+
+input::placeholder {
+  font-family: 'Poppins', sans-serif;
+}
