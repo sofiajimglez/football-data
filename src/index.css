@@ -45,3 +45,8 @@ table>:not(caption)>*>* {
 input::placeholder {
   font-family: 'Poppins', sans-serif;
 }
+
+select {
+  font-family: 'Poppins', sans-serif;
+}
+
