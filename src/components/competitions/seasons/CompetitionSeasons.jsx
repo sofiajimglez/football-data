@@ -4,6 +4,7 @@ import competitionsService from "../../../services/competitions.service";
 import SeasonItem from "./SeasonItem";
 import CompetitionHeader from "../header/CompetitionHeader";
 import ErrorAlert from "../../errors/error-alert/ErrorAlert";
+import BackToTopBtn from "../../top-btn/BackToTopBtn";
 
 export default function CompetitionSeasons() {
 
@@ -48,6 +49,8 @@ export default function CompetitionSeasons() {
           </tbody>
         </table>
       </div>
+
+      <BackToTopBtn />
     </>
   )
 }
