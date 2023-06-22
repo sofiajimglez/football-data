@@ -18,7 +18,7 @@ export default function BackToTopBtn() {
 
   return (
     <>
-      {btnVisibility && <a className='back-to-top text-decoration-none d-none d-sm-inline' onClick={scrollUp} ><i class="fa-regular fa-futbol fa-2xl fa-bounce"></i></a>}
+      {btnVisibility && <a className='back-to-top text-decoration-none d-none d-sm-inline' onClick={scrollUp} ><i className="fa-regular fa-futbol fa-2xl fa-bounce"></i></a>}
     </>
   )
 }
