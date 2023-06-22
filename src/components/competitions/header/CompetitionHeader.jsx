@@ -22,7 +22,7 @@ export default function CompetitionHeader({ competition }) {
           <p className="mb-0"> <strong>Current season:</strong> {startYear}/{endYear}</p>
           <p className="mb-0"> <strong>Current matchday:</strong> {competition.currentSeason.currentMatchday}</p>
         </div>
-        <div className="d-flex flex-wrap gap-3 mt-3">
+        <div className="d-flex flex-wrap gap-3 mt-4">
           <Link to={`/competitions/${competition.code}`} className="btn btn-main">Seasons</Link>
           <Link to={`/competitions/${competition.code}/standings`}  className="btn btn-main">Standings</Link>
           <Link to={`/competitions/${competition.code}/matches`}  className="btn btn-main">Matches</Link>

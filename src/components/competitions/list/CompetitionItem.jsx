@@ -15,7 +15,7 @@ export default function CompetitionItem({ competition }) {
           </div>
           <div className="btn-group btn-group-sm mt-3" role="group">
             <div className="btn-group" role="group">
-              <button type="button" className="btn btn-main px-4 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">more info</button>
+              <button type="button" className="btn btn-main-xs px-4 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">more info</button>
               <ul className="dropdown-menu">
                 <li><Link className="dropdown-item" to={`/competitions/${competition.code}`}>Seasons</Link></li>
                 <li><Link className="dropdown-item" to={`/competitions/${competition.code}/standings`}>Standings</Link></li>

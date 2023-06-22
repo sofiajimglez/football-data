@@ -2,3 +2,17 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 3%;
 }
+
+.btn-main {
+  color: whitesmoke;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  background-color: #043786;
+  border: 2px solid #043786;  
+}
+
+.btn-main:hover {
+  color: #043786;
+  background-color: transparent;
+  border: 2px solid #043786;  
+}
