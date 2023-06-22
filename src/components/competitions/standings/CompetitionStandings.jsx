@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { nanoid } from 'nanoid';
 import { getFormattedYear } from "../../../utils/getFormattedYear";
 import competitionsService from "../../../services/competitions.service";
 import CompetitionHeader from "../header/CompetitionHeader";
@@ -73,7 +74,7 @@ export default function CompetitionStandings() {
             </tr>
           </thead>
           <tbody className="table-group-divider">
-            {filteredTeams.map(standing => <StandingItem data={standing}  />)}
+            {filteredTeams.map(standing => <StandingItem data={standing} key={nanoid()} />)}
           </tbody>
         </table>
       </div>
