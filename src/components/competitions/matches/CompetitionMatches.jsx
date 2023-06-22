@@ -5,6 +5,7 @@ import competitionsService from "../../../services/competitions.service";
 import CompetitionHeader from "../header/CompetitionHeader";
 import MatchdayGroup from "./MatchdayGroup";
 import ErrorAlert from "../../errors/error-alert/ErrorAlert";
+import BackToTopBtn from "../../top-btn/BackToTopBtn";
 
 export default function CompetitionMatches() {
   const { code } = useParams();
@@ -60,6 +61,8 @@ export default function CompetitionMatches() {
       <h2 className="mt-5">Season: {startYear}/{endYear}</h2>
 
       {matches.map((matchday, i) => <MatchdayGroup day={i + 1} matches={matchday} key={i} />)}
+
+      <BackToTopBtn />
     </>
   )
 }

@@ -7,6 +7,7 @@ import CompetitionHeader from "../header/CompetitionHeader";
 import StandingItem from "./StandingItem";
 import ErrorAlert from "../../errors/error-alert/ErrorAlert";
 import SearchInput from "../../forms/search-input/SearchInput";
+import BackToTopBtn from "../../top-btn/BackToTopBtn";
 
 export default function CompetitionStandings() {
 
@@ -79,6 +80,8 @@ export default function CompetitionStandings() {
         </table>
       </div>
       <p className="mt-3"><small>POS: Position — P: Points — W: Won matches — D: Drawn matches — L: Lost matches — GF: Goals for — GA: Goals against</small></p>
+
+      <BackToTopBtn />
     </>
   )
 }
