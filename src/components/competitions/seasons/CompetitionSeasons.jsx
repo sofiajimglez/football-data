@@ -5,6 +5,7 @@ import SeasonItem from "./SeasonItem";
 import CompetitionHeader from "../header/CompetitionHeader";
 import ErrorAlert from "../../errors/error-alert/ErrorAlert";
 import BackToTopBtn from "../../top-btn/BackToTopBtn";
+import Loading from "../../loading/Loading";
 
 export default function CompetitionSeasons() {
 
@@ -26,7 +27,7 @@ export default function CompetitionSeasons() {
 
   const seasons = competition.seasons;
 
-  if (Object.keys(competition).length === 0) return (<p>Loading...</p>);
+  if (Object.keys(competition).length === 0) return (<Loading />);
 
   return (
     <>

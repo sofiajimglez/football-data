@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { getFormattedYear } from "../../../utils/getFormattedYear";
+import Loading from "../../loading/Loading";
 import './header.css';
 
 export default function CompetitionHeader({ competition }) {
@@ -7,7 +8,7 @@ export default function CompetitionHeader({ competition }) {
   const startYear = getFormattedYear(competition.currentSeason.startDate);
   const endYear = getFormattedYear(competition.currentSeason.endDate);
 
-  if (!competition) return (<p>Loading...</p>);
+  if (!competition) return (<Loading />);
 
   return (
     <div className="competition-header d-flex flex-column flex-sm-row flex-wrap gap-4 align-items-center">

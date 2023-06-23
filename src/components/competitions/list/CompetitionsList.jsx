@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import './competitions.css';
 import competitionsService from "../../../services/competitions.service";
 import CompetitionItem from "./CompetitionItem";
 import ErrorAlert from "../../errors/error-alert/ErrorAlert";
 import SearchInput from "../../forms/search-input/SearchInput";
+import Loading from "../../loading/Loading";
+import './competitions.css';
 
 export default function CompetitionsList() {
 
@@ -29,7 +30,7 @@ export default function CompetitionsList() {
 
   const filteredCompetitions = competitions.filter(elem => elem.name.toLowerCase().includes(search.toLowerCase()));
 
-  if (competitions.length === 0) return (<p>Loading...</p>);
+  if (competitions.length === 0) return (<Loading />);
 
   return (
     <>

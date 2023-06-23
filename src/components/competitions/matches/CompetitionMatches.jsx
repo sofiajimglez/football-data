@@ -7,6 +7,7 @@ import MatchdayGroup from "./MatchdayGroup";
 import ErrorAlert from "../../errors/error-alert/ErrorAlert";
 import BackToTopBtn from "../../top-btn/BackToTopBtn";
 import SelectMatchday from "../../forms/select-matchday/SelectMatchday";
+import Loading from "../../loading/Loading";
 
 export default function CompetitionMatches() {
   const { code } = useParams();
@@ -60,7 +61,7 @@ export default function CompetitionMatches() {
     }
   }
 
-  if (matches.length === 0) return (<p>Loading...</p>);
+  if (matches.length === 0) return (<Loading />);
 
   return (
     <>

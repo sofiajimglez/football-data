@@ -8,6 +8,7 @@ import StandingItem from "./StandingItem";
 import ErrorAlert from "../../errors/error-alert/ErrorAlert";
 import SearchInput from "../../forms/search-input/SearchInput";
 import BackToTopBtn from "../../top-btn/BackToTopBtn";
+import Loading from "../../loading/Loading";
 
 export default function CompetitionStandings() {
 
@@ -43,10 +44,9 @@ export default function CompetitionStandings() {
   const endYear = getFormattedYear(competition?.currentSeason?.endDate);
 
   const onSearch = (value) => setSearch(value);
-
   const filteredTeams = standings.filter(elem => elem.team.name.toLowerCase().includes(search.toLowerCase()));
 
-  if (standings.length === 0) return (<p>Loading...</p>);
+  if (standings.length === 0) return (<Loading />);
 
   return (
     <>
