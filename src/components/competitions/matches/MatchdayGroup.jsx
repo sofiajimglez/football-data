@@ -3,7 +3,9 @@ import MatchItem from "./MatchItem";
 export default function MatchdayGroup({ day, matches }) {
   return (
     <section className="mt-4">
+
       <h3 id={day}>Matchday {day}</h3>
+
       <div className="table-responsive">
         <table className="table table-hover align-middle">
           <tbody>
@@ -11,6 +13,12 @@ export default function MatchdayGroup({ day, matches }) {
           </tbody>
         </table>
       </div>
+
     </section>
   )
-}
+};
+
+MatchdayGroup.defaultProps = {
+  day: 1,
+  matches: []
+};

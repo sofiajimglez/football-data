@@ -12,7 +12,10 @@ import Loading from "../../loading/Loading";
 
 export default function CompetitionStandings() {
 
+  // Retrieve the "code" parameter from the URL to make the call to the api
   const { code } = useParams();
+
+  // State variables for competition, standings, fetch error message and search input
   const [competition, setCompetition] = useState({});
   const [standings, setStandings] = useState([]);
   const [fetchError, setFetchError] = useState('');
@@ -21,31 +24,42 @@ export default function CompetitionStandings() {
   useEffect(() => {
     async function fetchData() {
       try {
+
+        // Fetch competition data based on the provided code by useParams hook
         const competitionData = await competitionsService.detail(code);
         setCompetition(competitionData);
 
+        // Fetch standings data for the competition
         const standingsData = await competitionsService.standings(competitionData.id);
+
+        // Extract the standings table from the standings data
         const standingsTable = standingsData.standings.map(elem => elem.table).flat();
         setStandings(standingsTable);
 
-        setFetchError('');
+        setFetchError(''); // Reset fetch error to empty string
 
       } catch (error) {
         console.error(error);
-        setFetchError(error.response?.data?.message);
+
+        // Set the fetch error with the corresponding error message
+        setFetchError(error.response?.data?.message || error.message || 'An error occurred. Please, try again later.'); 
       }
     }
 
+    // Fetch data when the component mounts
     fetchData();
 
   }, [code]);
 
+  // Retrieve the formatted start and end years of the competition's current season
   const startYear = getFormattedYear(competition?.currentSeason?.startDate);
   const endYear = getFormattedYear(competition?.currentSeason?.endDate);
 
+  // Filter the standings array based on the select criteria & store them in a variable
   const onSearch = (value) => setSearch(value);
   const filteredTeams = standings.filter(elem => elem.team.name.toLowerCase().includes(search.toLowerCase()));
 
+  // Render the loading component while data is being fetched from the api
   if (standings.length === 0) return (<Loading />);
 
   return (
@@ -60,7 +74,7 @@ export default function CompetitionStandings() {
 
       <SearchInput search={search} onSearch={onSearch} placeholder={"Search team..."} />
 
-      <div className="table-responsive mt-3">
+      <section className="table-responsive mt-3">
         <table className="table table-striped">
           <thead>
             <tr>
@@ -78,10 +92,10 @@ export default function CompetitionStandings() {
             {filteredTeams.map(standing => <StandingItem data={standing} key={nanoid()} />)}
           </tbody>
         </table>
-      </div>
+      </section>
       <p className="mt-3"><small>POS: Position — P: Points — W: Won matches — D: Drawn matches — L: Lost matches — GF: Goals for — GA: Goals against</small></p>
 
       <BackToTopBtn />
     </>
   )
-}
+};

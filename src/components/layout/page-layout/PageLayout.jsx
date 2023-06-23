@@ -11,4 +11,4 @@ export default function PageLayout({ children }) {
       <Footer />
     </div>
   )
-}
+};

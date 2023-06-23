@@ -8,11 +8,14 @@ import './competitions.css';
 
 export default function CompetitionsList() {
 
+  // State variables for competitions list, fetch error message and search input
   const [competitions, setCompetitions] = useState([]);
   const [fetchError, setFetchError] = useState('');
   const [search, setSearch] = useState('');
 
   useEffect(() => {
+
+    // Fetch competitions from the api and filters by type 'league'
     competitionsService.list()
       .then(res => {
         const competitionsList = res.competitions;
@@ -26,10 +29,13 @@ export default function CompetitionsList() {
       })
   }, []);
 
+  // Handler for search input
   const onSearch = (value) => setSearch(value);
 
+  // Filter competitions based on search input
   const filteredCompetitions = competitions.filter(elem => elem.name.toLowerCase().includes(search.toLowerCase()));
 
+  // Render the loading component while data is being fetched from the api
   if (competitions.length === 0) return (<Loading />);
 
   return (
@@ -46,4 +52,4 @@ export default function CompetitionsList() {
 
     </>
   )
-}
+};

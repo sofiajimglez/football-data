@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getFormattedYear } from "../../../utils/getFormattedYear";
 import competitionsService from "../../../services/competitions.service";
@@ -10,7 +10,11 @@ import SelectMatchday from "../../forms/select-matchday/SelectMatchday";
 import Loading from "../../loading/Loading";
 
 export default function CompetitionMatches() {
+
+  // Retrieve the "code" parameter from the URL to make the call to the api
   const { code } = useParams();
+
+  // State variables for competition, matches list and fetch error message
   const [competition, setCompetition] = useState({});
   const [matches, setMatches] = useState([]);
   const [fetchError, setFetchError] = useState('');
@@ -18,12 +22,15 @@ export default function CompetitionMatches() {
   useEffect(() => {
     async function fetchData() {
       try {
+
+        // Fetch competition data based on the provided code by useParams hook
         const competitionData = await competitionsService.detail(code);
         setCompetition(competitionData);
 
+        // Fetch matches data for the competition based on the competition id
         const matchesData = await competitionsService.matches(competitionData.id);
 
-        // Groups the array of total matches by matchday
+        // Group the array of total matches by matchday
         const matchesByMatchday = matchesData.matches.reduce((result, match) => {
           const { matchday } = match;
           if (!result[matchday]) {
@@ -33,34 +40,39 @@ export default function CompetitionMatches() {
           return result;
         }, {});
 
-        // Extracts result in one array of arrays. Each one is a matchday with the corresponding matches
+        // Extract the matches grouped by matchday into an array of arrays & update the matches state
         const matchesByMatchdayArr = Object.values(matchesByMatchday);
         setMatches(matchesByMatchdayArr);
 
-        setFetchError('');
+        // Reset fetch error to empty string in case it was visible
+        setFetchError(''); 
         
       } catch (error) {
         console.error(error);
-        setFetchError(error.response?.data?.message);
+
+        // Set the fetch error with the corresponding error message
+        setFetchError(error.response?.data?.message || error.message || 'An error occurred. Please, try again later.'); 
       }
     }
     
+    // Fetch data when the component mounts
     fetchData();
 
   }, [code]);
 
+  // Retrieve the formatted start and end years of the competition's current season
   const startYear = getFormattedYear(competition?.currentSeason?.startDate);
   const endYear = getFormattedYear(competition?.currentSeason?.endDate);
 
-  //Scrolls down to the selected matchday
+  // Find the element with the selected matchday & scroll down the page if it exists
   const handleSelect = (selectedMatchday) => {
-    console.log('holi');
     const element = document.getElementById(selectedMatchday);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-  }
+  };
 
+  // Render the loading component while data is being fetched from the api
   if (matches.length === 0) return (<Loading />);
 
   return (
