@@ -5,9 +5,7 @@
 ## About the project
 This web interface is **developed with React** technology on the front-end. To do so, it **collects data** from the free version of the [football data API](https://www.football-data.org./), showing **leagues available**, the **ranking** of each league and the **results** of a particular league. The website is **fully responsive** and aspects like **design**, **usability** and **user experience** have been taken into account at the time of implementation. 
 
-➡️ A live demo is available here.
-
-## Requisites
+## Prerequisites
 Before running this project, please check that you have the following software installed on your machine:
 - **Node.js**: make sure you have Node.js version 14 or later installed. You can download it from the [oficial website](https://nodejs.org/en)
 - **npm (Node Package Manager)** is usually bundled with Node.js. You can verify if it's installed by running the following command in your terminal:
@@ -57,6 +55,13 @@ During development, any changes you make to the source code will be automaticall
 
 ![we're ready!](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmFjbjB5ZnA4czBlYXpuNmZuZWpkank2Mmd6cnhtdzVmc2JqbW96bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/SVBGVJwpWgon2rEtHl/giphy.gif)
 
+## Test
+To run the tests for the project, use the following command:
+```
+npm run test
+```
+This command will execute the test suite using Vite's built-in testing framework. It will run all the tests in the project and provide you with the test results and any associated errors or failures. Visit the [official documentation](https://vitest.dev/) for more info.
+
 ## Build for production
 When you're ready to build the project for production, execute the following command:
 ```
@@ -76,3 +81,9 @@ Let's talk and explore how I can bring value to your team!
 - Vector logo from  [Flaticon](https://www.flaticon.es/)
 - Loading animation from  [Loading.io](https://loading.io/)
 - Background vector from  [Freepick](https://www.freepik.es/)
+
+## Next steps
+ - [ ] Explore other competitions' section at the end of the page
+ - [ ] Error pages components (404, 500...)
+ - [ ] Improve error handling
+ - [ ] Improve rendering when the auth token is missing
