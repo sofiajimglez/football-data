@@ -3,7 +3,7 @@
 ![caption](https://res.cloudinary.com/dorpbnltc/image/upload/v1687526674/football-data/football-data-caption_m9q6u8.jpg)
 
 ## About the project
-This web interface is **developed with React** technology on the front-end. To do so, it **collects data** from the free version of the [football data API](https://www.football-data.org./), showing **leagues available**, the **ranking **of each league and the **results** of a particular league. The website is **fully responsive** and aspects like **design**, **usability** and **user experience** have been taken into account at the time of implementation. 
+This web interface is **developed with React** technology on the front-end. To do so, it **collects data** from the free version of the [football data API](https://www.football-data.org./), showing **leagues available**, the **ranking** of each league and the **results** of a particular league. The website is **fully responsive** and aspects like **design**, **usability** and **user experience** have been taken into account at the time of implementation. 
 
 ➡️ A live demo is available here.
 
@@ -53,7 +53,7 @@ This command will **build the project** and **launch a development server**. Onc
 
 During development, any changes you make to the source code will be automatically detected by the development server and the application will be hot-reloaded with the updated code.
 
-**And that's it! ✨ **
+**And that's it! ✨**
 
 ![we're ready!](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmFjbjB5ZnA4czBlYXpuNmZuZWpkank2Mmd6cnhtdzVmc2JqbW96bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/SVBGVJwpWgon2rEtHl/giphy.gif)
 
