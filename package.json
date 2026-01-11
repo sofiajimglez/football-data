@@ -11,6 +11,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@remix-run/router": "^1.23.2",
     "axios": "^1.4.0",
     "dayjs": "^1.11.8",
     "nanoid": "^4.0.2",
